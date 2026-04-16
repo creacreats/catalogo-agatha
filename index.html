@@ -6,7 +6,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Segoe+UI:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      background: #FBF3E8; /* cor exata do fundo da logo */
+      background: #FBF3E8;
       font-family: 'Segoe UI', Arial, sans-serif;
       margin: 0;
       padding: 0;
@@ -74,7 +74,7 @@
       margin: 0 18px 14px 18px;
       min-height: 40px;
     }
-    .produto-link {
+    .mais-info-btn {
       display: inline-block;
       font-size: 1rem;
       color: #fff;
@@ -87,10 +87,46 @@
       font-weight: 700;
       border: none;
       box-shadow: 0 1px 8px #e43d6e18;
+      cursor: pointer;
     }
-    .produto-link:hover {
+    .mais-info-btn:hover {
       background: #D83163;
       box-shadow: 0 2px 16px #e43d6e2a;
+    }
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      background: rgba(51, 28, 28, 0.36);
+      align-items: center;
+      justify-content: center;
+    }
+    .modal.open {
+      display: flex;
+    }
+    .modal-content {
+      background: #fff;
+      border-radius: 16px;
+      max-width: 420px;
+      padding: 28px 26px 20px 26px;
+      box-shadow: 0 8px 40px #c7719550;
+      position: relative;
+      text-align: left;
+    }
+    .modal-content h2 {
+      margin-top: 0; color: #E43D6E; font-family: 'Merriweather', serif;
+      font-size: 1.18rem; letter-spacing: 0.3px;
+      margin-bottom: 17px;
+    }
+    .modal-content p {
+      margin: 0 0 9px 0; color: #784356; font-size: 1.01rem;
+    }
+    .close-modal {
+      position: absolute; top: 10px; right: 16px;
+      border: none; background: none; font-size: 1.4rem;
+      color: #E43D6E; cursor: pointer; font-weight: bold;
     }
     @media (max-width: 800px) {
       .produto-card {
@@ -100,6 +136,7 @@
       .logo-header img {
         width: 160px;
       }
+      .modal-content { max-width: 97vw;}
     }
   </style>
 </head>
@@ -109,30 +146,90 @@
   </div>
   <div class="catalogo">
 
+    <!-- Yara -->
     <div class="produto-card">
       <img class="produto-img" src="yara.png" alt="My Yara Collection">
       <div class="produto-titulo">My Yara Collection</div>
       <div class="produto-desc">
-        Kit com 4 fragrâncias Lattafa Yara (Rosa, Laranja, Dourado e Lilás), luxo e variedade para presentear ou colecionar.
+        Kit Lattafa com 4 perfumes exclusivos.
       </div>
+      <button class="mais-info-btn" onclick="openModal('modal-yara')">Mais informações</button>
     </div>
-
+    <!-- Sabah -->
     <div class="produto-card">
       <img class="produto-img" src="sabah.png" alt="Sabah Al Ward">
       <div class="produto-titulo">Sabah Al Ward</div>
       <div class="produto-desc">
-        Perfume importado Al Wardanlam, 100ml, com notas orientais e toque de rosas — elegância marcante e originalidade.
+        Perfume Al Wardanlam oriental/floral intenso.
       </div>
+      <button class="mais-info-btn" onclick="openModal('modal-sabah')">Mais informações</button>
     </div>
-
+    <!-- Vulcan -->
     <div class="produto-card">
       <img class="produto-img" src="vulcan.jpg" alt="Vulcan Feu French Avenue">
       <div class="produto-titulo">Vulcan Feu</div>
       <div class="produto-desc">
-        Sofisticado Eau de Parfum French Avenue com design exclusivo e notas amadeiradas/cítricas refrescantes.
+        Eau de Parfum French Avenue, amadeirado/cítrico.
       </div>
+      <button class="mais-info-btn" onclick="openModal('modal-vulcan')">Mais informações</button>
     </div>
-
   </div>
+
+  <!-- MODAIS DE INFORMAÇÕES -->
+  <div class="modal" id="modal-yara">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal('modal-yara')">&times;</button>
+      <h2>My Yara Collection - Lattafa</h2>
+      <p><strong>Kit com 4 fragrâncias:</strong> Rosa, Laranja, Dourado e Lilás.</p>
+      <p><strong>Família olfativa:</strong> Floral-frutado, baunilha.</p>
+      <p><strong>Notas:</strong> Notas doces, florais e adocicadas; cada frasco possui toque único.</p>
+      <p><strong>Duração:</strong> Moderada/alta (Eau de Parfum).</p>
+      <p><strong>Diferencial:</strong> Kit de luxo, presenteável, excelente para quem deseja variedade e requinte.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-sabah">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal('modal-sabah')">&times;</button>
+      <h2>Sabah Al Ward - Al Wardanlam</h2>
+      <p><strong>Volume:</strong> 100ml, Eau de Parfum.</p>
+      <p><strong>Família olfativa:</strong> Floral Oriental.</p>
+      <p><strong>Notas:</strong> Rosa, especiarias leves, frutado suave, acorde ambarado e musk.</p>
+      <p><strong>Duração:</strong> Longa fixação, projeção marcante.</p>
+      <p><strong>Diferencial:</strong> Para ocasiões especiais ou noite, frasco vermelho com dourado de luxo, aroma envolvente e sofisticado.</p>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-vulcan">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal('modal-vulcan')">&times;</button>
+      <h2>Vulcan Feu - French Avenue</h2>
+      <p><strong>Volume:</strong> Eau de Parfum.</p>
+      <p><strong>Família olfativa:</strong> Amadeirado Cítrico Masculino.</p>
+      <p><strong>Notas de topo:</strong> Limão, grapefruit, especiarias frescas.</p>
+      <p><strong>Notas de corpo:</strong> Madeiras nobres, patchouli, âmbar.</p>
+      <p><strong>Duração:</strong> Excelente fixação e projeção.</p>
+      <p><strong>Diferencial:</strong> Frasco azul com design exclusivo e detalhe de serpente, indicado para quem busca sofisticação importada.</p>
+    </div>
+  </div>
+
+  <script>
+    function openModal(id) {
+      document.getElementById(id).classList.add('open');
+    }
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('open');
+    }
+    window.onclick = function(event) {
+      document.querySelectorAll('.modal').forEach(function(modal) {
+        if (event.target === modal) modal.classList.remove('open');
+      });
+    };
+    window.onkeydown = function(e){
+      if(e.key === "Escape"){
+        document.querySelectorAll('.modal.open').forEach(m => m.classList.remove('open'));
+      }
+    }
+  </script>
 </body>
 </html>
