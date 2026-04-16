@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Agatha Imports</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Segoe+UI:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background: #FBF3E8; /* cor exata do fundo da logo */
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .logo-header {
+      text-align: center;
+      margin: 42px 0 38px 0;
+    }
+    .logo-header img {
+      width: 260px;
+      max-width: 98vw;
+      display: block;
+      margin: 0 auto;
+      border-radius: 12px;
+      box-shadow: 0 5px 32px #d8bfbf24;
+    }
+    .catalogo {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      justify-content: center;
+      margin-bottom: 48px;
+    }
+    .produto-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 13px rgba(228, 61, 110, 0.07);
+      width: 260px;
+      border: 2px solid #E43D6E20;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+      text-align: center;
+      padding: 0 0 22px 0;
+    }
+    .produto-card:hover {
+      transform: translateY(-5px) scale(1.012);
+      box-shadow: 0 7px 32px rgba(228, 61, 110, 0.12);
+      border-color: #E43D6E;
+    }
+    .produto-img {
+      width: 170px;
+      height: 170px;
+      object-fit: contain;
+      margin-top: 26px;
+      margin-bottom: 14px;
+      background: #FBF3E8;
+      border-radius: 10px;
+      border: 1.8px solid #FBF3E8;
+      box-sizing: border-box;
+      box-shadow: 0 1px 10px #e43d6e09;
+    }
+    .produto-titulo {
+      font-size: 1.13rem;
+      color: #E43D6E;
+      margin-bottom: 7px;
+      font-weight: 700;
+      font-family: 'Merriweather', serif;
+      letter-spacing: 0.5px;
+    }
+    .produto-desc {
+      color: #D83163;
+      font-size: 0.97rem;
+      margin: 0 18px 14px 18px;
+      min-height: 40px;
+    }
+    .produto-link {
+      display: inline-block;
+      font-size: 1rem;
+      color: #fff;
+      background: #E43D6E;
+      border-radius: 4px;
+      padding: 8px 28px;
+      margin-top: 11px;
+      text-decoration: none;
+      transition: background 0.2s, box-shadow 0.2s;
+      font-weight: 700;
+      border: none;
+      box-shadow: 0 1px 8px #e43d6e18;
+    }
+    .produto-link:hover {
+      background: #D83163;
+      box-shadow: 0 2px 16px #e43d6e2a;
+    }
+    @media (max-width: 800px) {
+      .produto-card {
+        width: 96vw;
+        max-width: 340px;
+      }
+      .logo-header img {
+        width: 160px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo-header">
+    <img src="agatha-logo.png" alt="Agatha Imports Logo">
+  </div>
+  <div class="catalogo">
+
+    <div class="produto-card">
+      <img class="produto-img" src="yara.png" alt="My Yara Collection">
+      <div class="produto-titulo">My Yara Collection</div>
+      <div class="produto-desc">
+        Kit com 4 fragrâncias Lattafa Yara (Rosa, Laranja, Dourado e Lilás), luxo e variedade para presentear ou colecionar.
+      </div>
+    </div>
+
+    <div class="produto-card">
+      <img class="produto-img" src="sabah.png" alt="Sabah Al Ward">
+      <div class="produto-titulo">Sabah Al Ward</div>
+      <div class="produto-desc">
+        Perfume importado Al Wardanlam, 100ml, com notas orientais e toque de rosas — elegância marcante e originalidade.
+      </div>
+    </div>
+
+    <div class="produto-card">
+      <img class="produto-img" src="vulcan.jpg" alt="Vulcan Feu French Avenue">
+      <div class="produto-titulo">Vulcan Feu</div>
+      <div class="produto-desc">
+        Sofisticado Eau de Parfum French Avenue com design exclusivo e notas amadeiradas/cítricas refrescantes.
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
