@@ -20,10 +20,45 @@
       max-width: 98vw;
       display: block;
       margin: 0 auto;
-      /* Nenhuma sombra ou borda, sem border-radius */
       background: none;
       border: none;
       box-shadow: none;
+    }
+    .cart-icon {
+      position: fixed;
+      top: 26px;
+      right: 46px;
+      z-index: 101;
+      cursor: pointer;
+      background: #FFF;
+      border-radius: 50%;
+      box-shadow: 0 2px 10px #E43D6E18;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: box-shadow 0.2s;
+      border: 2px solid #E43D6E20;
+    }
+    .cart-icon:hover {
+      box-shadow: 0 6px 18px #E43D6E29;
+      border-color: #E43D6E77;
+    }
+    .cart-count {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #E43D6E;
+      color: #fff;
+      font-weight: bold;
+      font-size: 14px;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .catalogo {
       display: flex;
@@ -44,6 +79,7 @@
       transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
       text-align: center;
       padding: 0 0 24px 0;
+      position: relative;
     }
     .produto-card:hover {
       transform: translateY(-5px) scale(1.012);
@@ -70,45 +106,133 @@
       font-family: 'Merriweather', serif;
       letter-spacing: 0.5px;
     }
+    .produto-preco {
+      color: #353535;
+      font-size: 1.13rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+      margin-top: 2px;
+    }
     .produto-desc {
       color: #D83163;
       font-size: 1.05rem;
       margin: 0 18px 12px 18px;
       min-height: 40px;
     }
-    .mais-info-btn {
-      display: inline-block;
+    .botoes-produto {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 16px;
+    }
+    .mais-info-btn, .add-carrinho-btn {
       font-size: 1rem;
-      color: #fff;
-      background: #E43D6E;
       border-radius: 4px;
-      padding: 10px 34px;
-      margin-top: 19px;
+      padding: 10px 24px;
       text-decoration: none;
-      transition: background 0.2s, box-shadow 0.2s;
       font-weight: 700;
       border: none;
-      box-shadow: 0 1px 8px #e43d6e18;
       cursor: pointer;
-      font-family: 'Segoe UI', Arial, sans-serif;
+      transition: background 0.2s, box-shadow 0.2s;
       letter-spacing: 0.4px;
     }
-    .mais-info-btn:hover {
-      background: #D83163;
-      box-shadow: 0 2px 16px #e43d6e2a;
+    .mais-info-btn {
+      background: #E43D6E;
+      color: #fff;
+      box-shadow: 0 1px 8px #e43d6e18;
     }
-    @media (max-width: 800px) {
-      .catalogo {
-        gap: 16px;
-      }
-      .produto-card {
-        width: 97vw;
-        max-width: 350px;
-      }
-      .logo-header img {
-        width: 95vw;
-        min-width: 180px;
-      }
+    .mais-info-btn:hover { background: #D83163;}
+    .add-carrinho-btn {
+      background: #fff1fa;
+      color: #E43D6E;
+      border: 2px solid #E43D6E22;
+      box-shadow: 0 0.5px 4px #e43d6e16;
+    }
+    .add-carrinho-btn:hover {
+      background: #E43D6E;
+      color: #fff;
+    }
+    /* Carrinho lateral */
+    .carrinho-lateral {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 390px;
+      max-width: 98vw;
+      height: 100vh;
+      background: #fff;
+      z-index: 999;
+      box-shadow: -2px 0 34px #e43d6e42;
+      padding: 36px 24px 18px 24px;
+      transition: right 0.35s cubic-bezier(.6,0,.69,1.16);
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+    .carrinho-lateral.aberto {
+      right: 0;
+    }
+    .carrinho-lateral h3 {
+      color: #E43D6E;
+      font-family: 'Merriweather', serif;
+      font-size: 1.14rem;
+      margin-top: 0;
+    }
+    .carrinho-fechar-btn {
+      background: none;
+      border: none;
+      color: #E43D6E;
+      font-size: 2rem;
+      position: absolute;
+      right: 22px;
+      top: 7px;
+      cursor: pointer;
+    }
+    .carrinho-itens {
+      flex: 1;
+      overflow-y: auto;
+      margin-top: 14px;
+    }
+    .carrinho-item {
+      display: flex; align-items: center;
+      margin-bottom: 16px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .carrinho-item-img {
+      width: 56px; height: 56px; object-fit: contain; background: #FBF3E8; border-radius: 8px; margin-right: 15px;
+      border: 1.2px solid #eee;
+    }
+    .carrinho-item-info {
+      flex: 1;
+    }
+    .carrinho-item-titulo {
+      color: #E43D6E; font-size: 1.03rem; font-family: 'Merriweather', serif;
+      font-weight: 600; margin: 0;
+    }
+    .carrinho-item-preco {
+      color: #D83163;
+      font-size: .98rem;
+      font-weight: 500;
+    }
+    .remover-btn {
+      background: none; border: none; color: #D83163;
+      font-size: 1.3rem; margin-left: 10px; cursor: pointer;
+    }
+    .carrinho-subtotal {
+      font-size: 1.16rem;
+      font-weight: 600;
+      margin-top: 14px;
+      color: #353535;
+      text-align: right;
+      border-top: 1px solid #eee;
+      padding-top: 10px;
+    }
+    @media (max-width: 600px) {
+      .carrinho-lateral { width: 98vw; min-width: 170px; }
+      .cart-icon { right: 8px; }
+      .produto-card { width: 96vw; max-width: 350px;}
+      .logo-header img {width: 95vw;}
     }
   </style>
 </head>
@@ -116,37 +240,133 @@
   <div class="logo-header">
     <img src="agatha-logo.png" alt="Agatha Imports Logo">
   </div>
+
+  <!-- Carrinho botão -->
+  <div class="cart-icon" onclick="abrirCarrinho()">
+    <svg width="30" height="28" viewBox="0 0 22 22"><path d="M17.21 16.29C16.44 15.53 15.39 15.5 14.58 16.22C14.21 16.55 14 17.02 14 17.5C14 18.33 14.67 19 15.5 19C16.02 19 16.49 18.79 16.82 18.42C17.55 17.61 17.51 16.56 17.21 16.29ZM7.09 16.22C6.28 15.5 5.23 15.53 4.46 16.29C4.16 16.56 4.12 17.61 4.85 18.42C5.18 18.79 5.65 19 6.17 19C7 19 7.67 18.33 7.67 17.5C7.67 17.02 7.47 16.55 7.09 16.22ZM16.96 13.08L18.55 5.59C18.68 5 18.47 4.37 17.98 3.96C17.7 3.72 17.32 3.59 16.95 3.59H5.03L4.89 2.98C4.68 2.1 3.93 1.5 3 1.5H1.5C1.23 1.5 1 1.73 1 2C1 2.27 1.23 2.5 1.5 2.5H3C3.34 2.5 3.58 2.72 3.66 3.06L6.1 13.49C6.37 14.59 7.36 15.42 8.5 15.42H15.87C16.1 15.42 16.34 15.29 16.47 15.12C16.59 14.96 16.63 14.74 16.58 14.53L16.96 13.08Z" fill="#E43D6E"/></svg>
+    <span class="cart-count" id="cartCount">0</span>
+  </div>
+  
+  <div class="carrinho-lateral" id="carrinhoLateral">
+    <button class="carrinho-fechar-btn" onclick="fecharCarrinho()">&times;</button>
+    <h3>Meu Carrinho</h3>
+    <div class="carrinho-itens" id="carrinhoItens"></div>
+    <div class="carrinho-subtotal" id="carrinhoSubtotal">Subtotal: R$ 0,00</div>
+  </div>
+
   <div class="catalogo">
 
     <!-- Yara -->
-    <div class="produto-card">
+    <div class="produto-card" data-nome="My Yara Collection" data-preco="800.00" data-img="yara.png">
       <img class="produto-img" src="yara.png" alt="My Yara Collection">
       <div class="produto-titulo">My Yara Collection</div>
+      <div class="produto-preco">R$ 800,00</div>
       <div class="produto-desc">
         Kit com 4 fragrâncias Lattafa Yara (Rosa, Laranja, Dourado e Lilás), luxo e variedade para presentear ou colecionar.
       </div>
-      <a class="mais-info-btn" href="yara.html">Mais informações</a>
+      <div class="botoes-produto">
+        <a class="mais-info-btn" href="yara.html">Mais informações</a>
+        <button class="add-carrinho-btn" onclick="adicionarCarrinho(this)">Adicionar ao carrinho</button>
+      </div>
     </div>
 
     <!-- Sabah -->
-    <div class="produto-card">
+    <div class="produto-card" data-nome="Sabah Al Ward" data-preco="800.00" data-img="sabah.png">
       <img class="produto-img" src="sabah.png" alt="Sabah Al Ward">
       <div class="produto-titulo">Sabah Al Ward</div>
+      <div class="produto-preco">R$ 800,00</div>
       <div class="produto-desc">
         Perfume importado Al Wardanlam, 100ml, com notas orientais e toque de rosas — elegância marcante e originalidade.
       </div>
-      <a class="mais-info-btn" href="sabah.html">Mais informações</a>
+      <div class="botoes-produto">
+        <a class="mais-info-btn" href="sabah.html">Mais informações</a>
+        <button class="add-carrinho-btn" onclick="adicionarCarrinho(this)">Adicionar ao carrinho</button>
+      </div>
     </div>
 
     <!-- Vulcan -->
-    <div class="produto-card">
+    <div class="produto-card" data-nome="Vulcan Feu" data-preco="800.00" data-img="vulcan.jpg">
       <img class="produto-img" src="vulcan.jpg" alt="Vulcan Feu French Avenue">
       <div class="produto-titulo">Vulcan Feu</div>
+      <div class="produto-preco">R$ 800,00</div>
       <div class="produto-desc">
         Sofisticado Eau de Parfum French Avenue com design exclusivo e notas amadeiradas/cítricas refrescantes.
       </div>
-      <a class="mais-info-btn" href="vulcan.html">Mais informações</a>
+      <div class="botoes-produto">
+        <a class="mais-info-btn" href="vulcan.html">Mais informações</a>
+        <button class="add-carrinho-btn" onclick="adicionarCarrinho(this)">Adicionar ao carrinho</button>
+      </div>
     </div>
   </div>
+
+  <script>
+    // Carrinho em memória
+    let carrinho = [];
+    function abrirCarrinho() {
+      document.getElementById('carrinhoLateral').classList.add('aberto');
+      renderizarCarrinho();
+    }
+    function fecharCarrinho() {
+      document.getElementById('carrinhoLateral').classList.remove('aberto');
+    }
+    function adicionarCarrinho(btn) {
+      const card = btn.closest('.produto-card');
+      const nome = card.getAttribute('data-nome');
+      const preco = parseFloat(card.getAttribute('data-preco'));
+      const img = card.getAttribute('data-img');
+      const idx = carrinho.findIndex(item => item.nome === nome);
+      if(idx !== -1) {
+        carrinho[idx].qtd += 1;
+      } else {
+        carrinho.push({nome,preco,img,qtd:1});
+      }
+      atualizarContadorCarrinho();
+    }
+    function removerCarrinho(nome) {
+      const idx = carrinho.findIndex(item=>item.nome === nome);
+      if(idx !== -1) {
+        (carrinho[idx].qtd > 1) ? (carrinho[idx].qtd -= 1) : carrinho.splice(idx,1);
+      }
+      atualizarContadorCarrinho();
+      renderizarCarrinho();
+    }
+    function renderizarCarrinho() {
+      const el = document.getElementById('carrinhoItens');
+      const subtotalEl = document.getElementById('carrinhoSubtotal');
+      let total = 0;
+      if(carrinho.length===0){
+        el.innerHTML = '<p style="color:#888;">Seu carrinho está vazio.</p>';
+        subtotalEl.innerText = 'Subtotal: R$ 0,00';
+        return;
+      }
+      el.innerHTML = "";
+      carrinho.forEach(item=>{
+        total += item.preco*item.qtd;
+        el.innerHTML += `
+        <div class="carrinho-item">
+          <img class="carrinho-item-img" src="${item.img}" alt="${item.nome}">
+          <div class="carrinho-item-info">
+            <div class="carrinho-item-titulo">${item.nome}</div>
+            <div class="carrinho-item-preco">R$ ${item.preco.toFixed(2).replace('.',',')} x ${item.qtd}</div>
+          </div>
+          <button class="remover-btn" title="Remover" onclick="removerCarrinho('${item.nome.replace(/'/g,"\\'")}')">&minus;</button>
+        </div>`;
+      });
+      subtotalEl.innerText = 'Subtotal: R$ ' + total.toFixed(2).replace('.',',');
+    }
+    function atualizarContadorCarrinho() {
+      const conta = carrinho.reduce((sum,it)=>sum+it.qtd,0);
+      document.getElementById('cartCount').innerText = conta;
+    }
+    // Fechar carrinho clicando fora ou Esc
+    document.addEventListener('keydown',e=>{if(e.key==='Escape') fecharCarrinho();});
+    document.addEventListener('click',e=>{
+      if(document.getElementById('carrinhoLateral').classList.contains('aberto')){
+        if(!document.getElementById('carrinhoLateral').contains(e.target) && !document.querySelector('.cart-icon').contains(e.target)){
+          fecharCarrinho();
+        }
+      }
+    });
+  </script>
 </body>
 </html>
