@@ -119,29 +119,30 @@
       margin: 0 18px 16px 18px;
       min-height: 40px;
     }
-    /* Botões empilhados ocupando toda a largura do card */
+
+    /* Botões menores, curtos, super centralizados */
     .botoes-produto {
       display: flex;
       flex-direction: column;
-      align-items: stretch;
-      gap: 12px;
+      align-items: center;
+      gap: 10px;
       margin: 22px 0 0 0;
-      width: 100%;
-      max-width: 100%;
     }
     .mais-info-btn, .add-carrinho-btn {
-      width: 100%;
-      margin: 0;
-      display: block;
-      font-size: 1.09rem;
-      border-radius: 6px;
-      padding: 15px;
+      width: 220px;
+      max-width: 90%;
+      min-width: 120px;
+      font-size: 1rem;
+      border-radius: 7px;
+      padding: 11px 0;
       text-decoration: none;
       font-weight: 700;
       border: none;
       cursor: pointer;
       transition: background 0.2s, box-shadow 0.2s;
-      letter-spacing: 0.4px;
+      letter-spacing: 0.2px;
+      margin: 0 auto;
+      display: block;
       box-sizing: border-box;
     }
     .mais-info-btn {
@@ -241,6 +242,7 @@
       .cart-icon { right: 8px; }
       .produto-card { width: 96vw; max-width: 380px;}
       .logo-header img {width: 95vw;}
+      .mais-info-btn, .add-carrinho-btn { width: 95%; }
     }
   </style>
 </head>
@@ -317,6 +319,7 @@
     function fecharCarrinho() {
       document.getElementById('carrinhoLateral').classList.remove('aberto');
     }
+    // Carrinho abre automaticamente ao adicionar produto!
     function adicionarCarrinho(btn) {
       const card = btn.closest('.produto-card');
       const nome = card.getAttribute('data-nome');
@@ -329,6 +332,7 @@
         carrinho.push({nome,preco,img,qtd:1});
       }
       atualizarContadorCarrinho();
+      abrirCarrinho(); // <- abre a aba do carrinho automaticamente!
     }
     function removerCarrinho(nome) {
       const idx = carrinho.findIndex(item=>item.nome === nome);
