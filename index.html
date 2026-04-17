@@ -119,24 +119,19 @@
       margin: 0 18px 16px 18px;
       min-height: 40px;
     }
-
-    /* Botões empilhados, grandes, ocupando largura total do card */
+    /* Botões empilhados ocupando toda a largura do card */
     .botoes-produto {
       display: flex;
       flex-direction: column;
       align-items: stretch;
       gap: 12px;
       margin: 22px 0 0 0;
-      width: 87%;
-      max-width: 310px;
-      margin-left: auto;
-      margin-right: auto;
+      width: 100%;
+      max-width: 100%;
     }
     .mais-info-btn, .add-carrinho-btn {
       width: 100%;
-      min-width: 140px;
-      max-width: 100%;
-      margin: 0 auto;
+      margin: 0;
       display: block;
       font-size: 1.09rem;
       border-radius: 6px;
@@ -147,6 +142,7 @@
       cursor: pointer;
       transition: background 0.2s, box-shadow 0.2s;
       letter-spacing: 0.4px;
+      box-sizing: border-box;
     }
     .mais-info-btn {
       background: #E43D6E;
@@ -245,7 +241,6 @@
       .cart-icon { right: 8px; }
       .produto-card { width: 96vw; max-width: 380px;}
       .logo-header img {width: 95vw;}
-      .botoes-produto { max-width: 350px; }
     }
   </style>
 </head>
